@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 var session = require("express-session");
+const cors = require('cors');
 
 
 
@@ -11,6 +12,7 @@ const port = process.env.PORT||5000;
 app.set('port', process.env.port || port); 
 app.use(bodyParser.json()); 
 app.use(express.json());
+app.use(cors());
 
 const poemRoute = require("./routes/api/poems");
 app.use("/", poemRoute);
