@@ -48,7 +48,7 @@ poem: req.body.poem
 })
 newpoem
 .save()
-.then(res.redirect(200,'https://devwrite.herokuapp.com/#/addpoem'))
+.then(res.redirect('https://devwrite.herokuapp.com/#/addpoem'))
 .catch(() => res.status(400).json({
 msg: 'Something went wrong'
 }))
@@ -81,7 +81,7 @@ exports.verify = (req, res) => {
 
 
     if(username ===u && password ===p){
-    res.redirect(200,'https://devwrite.herokuapp.com/#/addpoem');
+    res.redirect('https://devwrite.herokuapp.com/#/addpoem');
     
         // res.status(200).json({
         //     msg: 'verified'
