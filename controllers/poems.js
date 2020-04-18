@@ -4,6 +4,8 @@ const poem = require('../models/poem');
 const express = require('express');
 var session = require("express-session");
 const app = express();
+const cors = require('cors');
+app.use(cors());
 app.use(express.json());
 app.use(session({
     secret: 'W$q4=25*8%v-}UV',
@@ -46,7 +48,7 @@ poem: req.body.poem
 })
 newpoem
 .save()
-.then(data => res.json(data))
+.then(res.redirect(200,'https://devwrite.herokuapp.com/#/addpoem'))
 .catch(() => res.status(400).json({
 msg: 'Something went wrong'
 }))
@@ -79,11 +81,11 @@ exports.verify = (req, res) => {
 
 
     if(username ===u && password ===p){
-    // res.sttredirect('https://devwrite.herokuapp.com/#/addpoem');
+    res.redirect(200,'https://devwrite.herokuapp.com/#/addpoem');
     
-        res.status(200).json({
-            msg: 'verified'
-         });
+        // res.status(200).json({
+        //     msg: 'verified'
+        //  });
     }else{
         res.status(400).json({
             msg: 'Something went wrong'
