@@ -79,8 +79,8 @@ exports.verify = (req, res) => {
     const u=require('../config/conn').username;
     const p=require('../config/conn').password;
     
-     req.session.username=req.body.username;
-     console.log(req.session.username);
+    //  req.session.username=req.body.username;
+    //  console.log(req.session.username);
 
 
     if(username ===u && password ===p){
