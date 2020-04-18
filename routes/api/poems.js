@@ -7,8 +7,7 @@ const router = express.Router();
 
 const poemsController = require('../../controllers/poems');
 router.post('/addlogin', poemsController.verify);
-// router.post('/addpoem',poemsController.isAuth, poemsController.create);
-router.post('/addpoem', poemsController.create);
+router.post('/addpoem',poemsController.isAuth, poemsController.create);
 router.get('/', poemsController.get);
 
 module.exports=router;

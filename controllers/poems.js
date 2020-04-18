@@ -48,10 +48,7 @@ poem: req.body.poem
 })
 newpoem
 .save()
-.then(res.
-    status(200).json({
-        msg: 'added'
-     }))
+.then(res.redirect('https://devwrite.herokuapp.com/#/addpoem'))
 .catch(() => res.status(400).json({
 msg: 'Something went wrong'
 }))
@@ -79,16 +76,16 @@ exports.verify = (req, res) => {
     const u=require('../config/conn').username;
     const p=require('../config/conn').password;
     
-    //  req.session.username=req.body.username;
-    //  console.log(req.session.username);
+     req.session.username=req.body.username;
+     console.log(req.session.username);
 
 
     if(username ===u && password ===p){
-    // res.redirect('https://devwrite.herokuapp.com/#/addpoem');
+    res.redirect('https://devwrite.herokuapp.com/#/addpoem');
     
-        res.status(200).json({
-            msg: 'verified'
-         });
+        // res.status(200).json({
+        //     msg: 'verified'
+        //  });
     }else{
         res.status(400).json({
             msg: 'Something went wrong'
