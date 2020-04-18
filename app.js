@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 var session = require("express-session");
 const cors = require('cors');
-
+const cs = require('cookie-session');
+const cookieParser = require('cookie-parser');
 
 
 const app = express();
@@ -13,18 +14,26 @@ app.set('port', process.env.port || port);
 app.use(bodyParser.json()); 
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 
-const poemRoute = require("./routes/api/poems");
-app.use("/", poemRoute);
+
+
 
 app.use(session({
   secret: 'W$q4=25*8%v-}UV',
   resave: false,
   saveUninitialized: true,
   cookie: {
-      maxAge: 300000
-      }
+      maxAge: 300000,
+      httpOnly: false,
+      secure: false
+}
 }));
+
+
+const poemRoute = require("./routes/api/poems");
+app.use("/", poemRoute);
+
 
 
 
