@@ -43,6 +43,11 @@ exports.isAuth = function isAuth(req,res,next){
 exports.create =   (req, res) => {
 
 
+    const username = req.body.username;
+    const u=require('../config/conn').username;
+
+
+    if(username===u){
 const newpoem = new poem({
 poem: req.body.poem
 })
@@ -55,6 +60,14 @@ newpoem
 .catch(() => res.status(400).json({
 msg: 'Something went wrong'
 }))
+}
+
+else{
+    res.status(400).json({
+        msg: 'You are not Admin'
+        });
+
+}
 }
 
 

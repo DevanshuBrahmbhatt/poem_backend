@@ -18,7 +18,7 @@ app.use(cors());
 app.use(cookieParser());
 
 
-app.use(express.static(path.join(__dirname, 'dist')));
+// app.use(express.static(path.join(__dirname, 'dist')));
 
 
 app.use(session({
