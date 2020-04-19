@@ -5,6 +5,7 @@ var session = require("express-session");
 const cors = require('cors');
 const cs = require('cookie-session');
 const cookieParser = require('cookie-parser');
+var path = require('path');
 
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(cookieParser());
 
 
+app.use(express.static(path.join(__dirname, 'dist')));
 
 
 app.use(session({
